@@ -1,6 +1,6 @@
 # Dell的自我介绍
 
-<img src="./dev_skills/images/dell.jpg" width="200" alt="Dell形象">
+<img src="https://github.com/guraduang/nlp/tree/main/dev_skills/images/dell.jpg" width="200" alt="Dell形象">
 
 大家好，我是**Dell**，我的身份是*笔记本电脑*。以下是我的自我介绍：
 
@@ -42,7 +42,7 @@ print(np.array([1, 2, 3]) ** 2)
 其中执行`print(np.array([1, 2, 3]) ** 2)`可输出结果。
 
 ### 我最喜欢的环境管理工具是conda
-<img src="./dev_skills/images/1.png" width="800" alt="截图一">
+<img src="https://github.com/guraduang/nlp/tree/main/dev_skills/images/1.png" width="800" alt="截图一">
 
 ### 我可以在IDE上使用我建立的虚拟环境
-<img src="./dev_skills/images/2.png" width="800" alt="截图二">
+<img src="https://github.com/guraduang/nlp/tree/main/dev_skills/images/2.png" width="800" alt="截图二">
