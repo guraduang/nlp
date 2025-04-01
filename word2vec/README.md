@@ -1,101 +1,108 @@
-# CBOW模型填空题答案
-
 ## Vocabulary类
-1. ​**mask_token对应的索引通过调用add_token方法赋值给`self.____`属性**  
-   ​**答案**: `mask_index`
+1、在Vocabulary类中，mask_token对应的索引通过调用add_token方法赋值给self.____属性。
 
-2. ​**lookup_token方法中，如果`self.unk_index >=0`，则对未登录词返回____**  
-   ​**答案**: `self.unk_index`
+**mask_index** 
 
-3. ​**调用`add_many`方法添加多个token时，实际是通过循环调用____方法实现**  
-   ​**答案**: `add_token`
+2、lookup_token方法中，如果self.unk_index >=0，则对未登录词返回____。
 
----
+**self.unk_index**  
 
-## CBOWVectorizer类
-4. ​**`vectorize`方法中，当`vector_length < 0`时，最终向量长度等于____的长度**  
-   ​**答案**: `context_indices`
+3、调用add_many方法添加多个token时，实际是通过循环调用____方法实现的。
 
-5. ​**`from_dataframe`方法构建词表时，会遍历DataFrame中____和____两列的内容**  
-   ​**答案**: `target`、`context`
+**add_token**
 
-6. ​**`out_vector[len(indices):]`的部分填充为`self.cbow_vocab.____`**  
-   ​**答案**: `mask_index`
+CBOWVectorizer类
+4、vectorize方法中，当vector_length < 0时，最终向量长度等于____的长度。
 
----
+**context_indices** 
+
+5、from_dataframe方法构建词表时，会遍历DataFrame中____和____两列的内容。
+
+**target** **context** 
+
+6、out_vector[len(indices):]的部分填充为self.cbow_vocab.____。
+
+**mask_index** 
 
 ## CBOWDataset类
-7. ​**`_max_seq_length`通过计算所有`context`列的____的最大值得出**  
-   ​**答案**: `长度`
+7、_max_seq_length通过计算所有context列的____的最大值得出。
 
-8. ​**`set_split`方法通过`self._lookup_dict`选择对应的____和____**  
-   ​**答案**: `contexts`、`targets`
+**长度**  
 
-9. ​**`__getitem__`返回的字典中，`y_target`通过查找____列的token得到**  
-   ​**答案**: `target`
+8、set_split方法通过self._lookup_dict选择对应的____和____。
 
----
+**contexts** 和 **targets** 
+
+9、__getitem__返回的字典中，y_target通过查找____列的token得到。
+
+**target**
 
 ## 模型结构
-10. ​**CBOWClassifier的`forward`中，`x_embedded_sum`的计算方式是`embedding(x_in).____(dim=1)`**  
-    ​**答案**: `sum`
+10、CBOWClassifier的forward中，x_embedded_sum的计算方式是embedding(x_in).____(dim=1)。
 
-11. ​**模型输出层`fc1`的`out_features`等于____参数的值**  
-    ​**答案**: `num_classes`
+**sum**
 
----
+11、模型输出层fc1的out_features等于____参数的值。
+
+**num_classes** 
 
 ## 训练流程
-12. ​**`generate_batches`函数通过PyTorch的____类实现批量加载**  
-    ​**答案**: `DataLoader`
+12、generate_batches函数通过PyTorch的____类实现批量加载。
 
-13. ​**训练时`classifier.train()`的作用是启用____和____模式**  
-    ​**答案**: `dropout`、`Batch Normalization`
+**DataLoader** 
 
-14. ​**反向传播前必须执行____.zero_grad()清空梯度**  
-    ​**答案**: `optimizer`
+13、训练时classifier.train()的作用是启用____和____模式。
 
-15. ​**`compute_accuracy`中`y_pred_indices`通过____方法获取预测类别**  
-    ​**答案**: `argmax`
+**dropout** 和 **Batch Normalization**
 
----
+14、反向传播前必须执行____.zero_grad()清空梯度。
+
+**optimizer**
+
+15、compute_accuracy中y_pred_indices通过____方法获取预测类别。
+
+**argmax**
 
 ## 训练状态管理
-16. ​**`make_train_state`中`early_stopping_best_val`初始化为____**  
-    ​**答案**: `inf`
+16、make_train_state中early_stopping_best_val初始化为____。
 
-17. ​**`update_train_state`在连续____次验证损失未下降时会触发早停**  
-    ​**答案**: `3`
+**inf**
 
-18. ​**当验证损失下降时，`early_stopping_step`会被重置为____**  
-    ​**答案**: `0`
+17、update_train_state在连续____次验证损失未下降时会触发早停。
 
----
+**3**
+
+18、当验证损失下降时，early_stopping_step会被重置为____。
+
+**0**
 
 ## 设备与随机种子
-19. ​**`set_seed_everywhere`中与CUDA相关的设置是____.manual_seed_all(seed)**  
-    ​**答案**: `torch.cuda`
+19、set_seed_everywhere中与CUDA相关的设置是____.manual_seed_all(seed)。
 
-20. ​**`args.device`的值根据____.is_available()确定**  
-    ​**答案**: `torch.cuda`
+**torch.cuda**
 
----
+20、args.device的值根据____.is_available()确定。
+
+**torch.cuda**
 
 ## 推理与测试
-21. ​**`get_closest`函数中排除计算的目标词本身是通过`continue`判断`word == ____`实现**  
-    ​**答案**: `target_word`
+21、get_closest函数中排除计算的目标词本身是通过continue判断word == ____实现的。
 
-22. ​**测试集评估时一定要调用____方法禁用dropout**  
-    ​**答案**: `eval()`
+**target_word** 
 
----
+22、测试集评估时一定要调用____方法禁用dropout。
+
+**eval()** 
 
 ## 关键参数
-23. ​**CBOWClassifier的`padding_idx`参数默认值为____**  
-    ​**答案**: `0`
+23、CBOWClassifier的padding_idx参数默认值为____。
 
-24. ​**`args`中控制词向量维度的参数是____**  
-    ​**答案**: `embedding_size`
+**0**
 
-25. ​**学习率调整策略`ReduceLROnPlateau`的触发条件是验证损失____（增加/减少）​**  
-    ​**答案**: `减少`
+24、args中控制词向量维度的参数是____。
+
+**embedding_size**
+
+25、学习率调整策略ReduceLROnPlateau的触发条件是验证损失____（增加/减少）。
+
+**减少**
