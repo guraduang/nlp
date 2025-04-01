@@ -5,27 +5,6 @@
 - 高频词特征选择
 - TF-IDF加权特征选择
 
-## 算法基础
-### 多项式朴素贝叶斯分类器
-采用基于贝叶斯定理的概率分类器，其核心公式为：
-
-$$
-P(y|x_1,...,x_n) = \frac{P(y)\prod_{i=1}^n P(x_i|y)}{P(x_1,...,x_n)}
-$$
-
-**特征独立性假设**：
-假设各特征条件独立，即：
-$$
-P(x_i|y,x_1,...,x_{i-1},x_{i+1},...,x_n) = P(x_i|y)
-$$
-
-**邮件分类应用**：
-- 计算邮件属于垃圾/普通类别的后验概率
-- 比较两类概率进行决策：
-  $$
-  \hat{y} = \arg\max_y P(y)\prod_{i=1}^n P(x_i|y)
-  $$
-
 ## 数据处理流程
 ### 预处理流程
 1. ​**文本清洗**：
@@ -51,7 +30,10 @@ $$
     TfidfVectorizer(max_features=top_num)
 
 # 高频词模式
+```python
 python main.py --feature=frequency --top=100
-
+```
 # TF-IDF模式
+```python
 python main.py --feature=tfidf --top=100
+```
